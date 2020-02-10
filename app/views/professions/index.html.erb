@@ -1,0 +1,22 @@
+<% @p_list = @list %>
+<% @list.tap do |a| %>
+<% if @user.professions.include? a %>
+<% @p_list.except(a) %>
+<% end %>
+<% end %>
+
+<h1>Add a new professsion</h1>
+<%= form_for :profession, :url => {:action => "create", :id => @profession} do |f| %>
+<%= f.select(:name, @p_list.each {|a,b| [ a, b] }, { :multiple => false}) %>
+<%= f.submit %>
+<% end %>
+
+<h2> My professions</h2>
+<% @user.professions.each do |profession| %>
+<p><%= profession.name %> </p>
+
+<div class="col-1">
+  <%= button_to "delete", profession, method: :delete %>
+</div>
+
+<% end %>
