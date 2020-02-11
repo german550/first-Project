@@ -5,6 +5,9 @@
 <% end %>
 <% end %>
 
+
+
+
 <h1>Add a new professsion</h1>
 <%= form_for :profession, :url => {:action => "create", :id => @profession} do |f| %>
 <%= f.select(:name, @p_list.each {|a,b| [ a, b] }, { :multiple => false}) %>
@@ -15,6 +18,9 @@
 <% @user.professions.each do |profession| %>
 <p><%= profession.name %> </p>
 
+<div class="col-1">
+  <%= button_to "create a post", "/professions/#{profession.id}/descriptions/new", method: :get %>
+</div>
 <div class="col-1">
   <%= button_to "delete", profession, method: :delete %>
 </div>

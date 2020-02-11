@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   get "/sign_in", to: "static#sign_in"
   get "/sign_out", to: "static#sign_out"
 
-  resources :professions
+  resources :professions do
+    resources :descriptions
+  end
 end

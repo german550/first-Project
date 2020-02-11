@@ -1,0 +1,6 @@
+<%= @description.description.inspect %>
+<%= image_tag(@description.image) %>
+<div class="col-1">
+  <%= button_to "delete", "/professions/#{@description.profession_id}/descriptions/#{@description.id}", method: :delete %>
+
+</div>
